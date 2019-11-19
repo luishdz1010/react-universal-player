@@ -72,6 +72,6 @@ function formatSize(size, filename, type, raw) {
 async function getSizeInfo(code, filename, raw = false) {
   const isRaw = raw || code.length < 5000
   const gzip = formatSize(await gzipSize(code), filename, 'gz', isRaw)
-  const brotli = formatSize(await brotliSize(code), filename, 'br', isRaw)
+  const brotli = formatSize(brotliSize.sync(code), filename, 'br', isRaw)
   return gzip + '\n' + brotli
 }
