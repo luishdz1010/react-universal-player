@@ -3,10 +3,7 @@
     "moduleResolution": "node",
     "module": "esnext",
     "target": "es5",
-    "lib": [
-      "dom",
-      "es2018"
-    ],
+    "lib": ["dom", "es6"],
     "strict": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
@@ -15,8 +12,8 @@
     "stripInternal": true,
     "declaration": true,
     "declarationMap": true,
-    "declarationDir": "dist/types",
-    "outDir": "dist/esm5",
+    "declarationDir": "dist",
+    "outDir": "dist",
     "resolveJsonModule": true,
     "importHelpers": true,
     "plugins": [
@@ -26,8 +23,6 @@
       }
     ]
   },
-  "include": [
-    "./src"
-  ],
+  "include": ["./src"],
   "compileOnSave": false
 }

@@ -13,9 +13,8 @@
     "universal"
   ],
   "main": "./bundles/index.umd.js",
-  "module": "./esm5/index.js",
-  "es2015": "./esm2015/index.js",
-  "typings": "./types/index.d.ts",
+  "module": "./index.js",
+  "typings": "./index.d.ts",
   "sideEffects": false,
   "repository": {
     "type": "git",
@@ -31,7 +30,7 @@
   "scripts": {
     "cleanup": "shx rm -rf dist",
     "prebuild": "npm run cleanup && npm run verify",
-    "build": "tsc && tsc --target es2018 --outDir dist/esm2015 && rollup -c config/rollup.config.js && rollup -c config/rollup.config.js --environment NODE_ENV:production",
+    "build": "tsc && tsc --target es2020 --outDir dist/es && rollup -c config/rollup.config.js && rollup -c config/rollup.config.js --environment NODE_ENV:production",
     "postbuild": "node scripts/copy && npm run size",
     "docs": "typedoc -p . --theme minimal --target 'es6' --excludeNotExported --excludePrivate --ignoreCompilerErrors --exclude \"**/src/**/__tests__/*.*\" --out docs src/",
     "test": "jest -c ./config/jest.config.js",
@@ -53,7 +52,7 @@
     "release:github": "git push --no-verify --follow-tags origin master",
     "release:npm": "npm publish dist",
     "release:preflight": "npm pack ./dist --dry-run",
-    "size": "node scripts/file-size ./dist/bundles/index.umd.min.js ./dist/bundles/index.esm.min.js"
+    "size": "node scripts/file-size ./dist/bundles/index.umd.min.js"
   },
   "config": {
     "commitizen": {
@@ -78,6 +77,7 @@
     ]
   },
   "peerDependencies": {
+    "react": ">=16.8.0",
     "tslib": ">=1.9.0"
   },
   "dependencies": {},
@@ -87,6 +87,7 @@
     "@types/jest": "24.0.23",
     "@types/node": "12.12.9",
     "@types/prettier": "1.18.3",
+    "@types/react": "16.9.11",
     "@types/webpack-config-utils": "2.3.0",
     "commitizen": "4.0.3",
     "cross-var": "1.1.0",

@@ -1,1 +1,1 @@
-export { Greeter } from './greeter'
+export { default as StandalonePlayer } from './StandalonePlayer'

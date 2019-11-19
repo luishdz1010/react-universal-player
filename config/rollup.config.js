@@ -1,14 +1,14 @@
 import { resolve } from 'path'
-import sourceMaps from 'rollup-plugin-sourcemaps'
-import nodeResolve from 'rollup-plugin-node-resolve'
-import json from 'rollup-plugin-json'
 import commonjs from 'rollup-plugin-commonjs'
+import json from 'rollup-plugin-json'
+import nodeResolve from 'rollup-plugin-node-resolve'
 import replace from 'rollup-plugin-replace'
+import sourceMaps from 'rollup-plugin-sourcemaps'
 import { uglify } from 'rollup-plugin-uglify'
-import { terser } from 'rollup-plugin-terser'
 import { getIfUtils, removeEmpty } from 'webpack-config-utils'
 
 import pkg from '../package.json'
+
 const { pascalCase, normalizePackageName, getOutputFileName } = require('./helpers')
 
 /**
@@ -27,12 +27,11 @@ const DIST = resolve(ROOT, 'dist')
 
 /**
  * Object literals are open-ended for js checking, so we need to be explicit
- * @type {{entry:{esm5: string, esm2015: string},bundles:string}}
+ * @type {{entry:{esm: string},bundles:string}}
  */
 const PATHS = {
   entry: {
-    esm5: resolve(DIST, 'esm5'),
-    esm2015: resolve(DIST, 'esm2015'),
+    esm: DIST,
   },
   bundles: resolve(DIST, 'bundles'),
 }
@@ -83,7 +82,7 @@ const CommonConfig = {
  */
 const UMDconfig = {
   ...CommonConfig,
-  input: resolve(PATHS.entry.esm5, 'index.js'),
+  input: resolve(PATHS.entry.esm, 'index.js'),
   output: {
     file: getOutputFileName(resolve(PATHS.bundles, 'index.umd.js'), ifProduction()),
     format: 'umd',
@@ -93,20 +92,4 @@ const UMDconfig = {
   plugins: removeEmpty(/** @type {Plugin[]} */ ([...plugins, ifProduction(uglify())])),
 }
 
-/**
- * @type {Config}
- */
-const FESMconfig = {
-  ...CommonConfig,
-  input: resolve(PATHS.entry.esm2015, 'index.js'),
-  output: [
-    {
-      file: getOutputFileName(resolve(PATHS.bundles, 'index.esm.js'), ifProduction()),
-      format: 'es',
-      sourcemap: true,
-    },
-  ],
-  plugins: removeEmpty(/** @type {Plugin[]} */ ([...plugins, ifProduction(terser())])),
-}
-
-export default [UMDconfig, FESMconfig]
+export default UMDconfig
