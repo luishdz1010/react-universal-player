@@ -3,8 +3,8 @@
  */
 const config = {
   preset: 'ts-jest',
-  rootDir: '..',
-  testMatch: ['<rootDir>/src/**/__tests__/**/*.ts?(x)', '<rootDir>/src/**/?(*.)+(spec|test).ts?(x)'],
+  rootDir: '.',
+  testMatch: ['<rootDir>/src/**/?(*.)+(node|jsdom).test.ts?(x)'],
   testPathIgnorePatterns: ['dist'],
   coverageThreshold: {
     global: {
@@ -14,8 +14,13 @@ const config = {
       statements: 80,
     },
   },
-  setupFiles: ['<rootDir>/config/setup-tests.js'],
+  setupFilesAfterEnv: ['<rootDir>/config/setup-tests.ts'],
   watchPlugins: ['jest-watch-typeahead/filename', 'jest-watch-typeahead/testname'],
+  testEnvironment: 'jest-environment-jsdom-fourteen',
+  testEnvironmentOptions: {
+    resources: 'usable',
+    runScripts: 'dangerously',
+  },
 }
 
 module.exports = config

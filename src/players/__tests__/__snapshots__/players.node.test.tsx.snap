@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`VimeoPlayer universal renders with url= 1`] = `"<iframe src=\\"\\" allowfullscreen=\\"\\" allow=\\"autoplay; fullscreen\\" frameBorder=\\"0\\"></iframe>"`;
+
+exports[`VimeoPlayer universal renders with url=http://example.com 1`] = `"<iframe src=\\"http://example.com/?autoplay=0&amp;controls=1&amp;loop=0&amp;muted=0&amp;playsinline=0\\" allowfullscreen=\\"\\" allow=\\"autoplay; fullscreen\\" frameBorder=\\"0\\"></iframe>"`;
+
+exports[`VimeoPlayer universal renders with url=notaurl 1`] = `"<iframe src=\\"notaurl\\" allowfullscreen=\\"\\" allow=\\"autoplay; fullscreen\\" frameBorder=\\"0\\"></iframe>"`;
+
+exports[`VimeoPlayer universal renders with url=video.com 1`] = `"<iframe src=\\"video.com\\" allowfullscreen=\\"\\" allow=\\"autoplay; fullscreen\\" frameBorder=\\"0\\"></iframe>"`;
+
+exports[`YouTubePlayer universal renders with url= 1`] = `"<iframe src=\\"\\" allowfullscreen=\\"\\" allow=\\"autoplay; fullscreen\\" frameBorder=\\"0\\"></iframe>"`;
+
+exports[`YouTubePlayer universal renders with url=http://example.com 1`] = `"<iframe src=\\"http://example.com/?autoplay=0&amp;loop=0&amp;playsinline=0&amp;controls=1&amp;mute=0&amp;modestbranding=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1&amp;iv_load_policy=1\\" allowfullscreen=\\"\\" allow=\\"autoplay; fullscreen\\" frameBorder=\\"0\\"></iframe>"`;
+
+exports[`YouTubePlayer universal renders with url=notaurl 1`] = `"<iframe src=\\"notaurl\\" allowfullscreen=\\"\\" allow=\\"autoplay; fullscreen\\" frameBorder=\\"0\\"></iframe>"`;
+
+exports[`YouTubePlayer universal renders with url=video.com 1`] = `"<iframe src=\\"video.com\\" allowfullscreen=\\"\\" allow=\\"autoplay; fullscreen\\" frameBorder=\\"0\\"></iframe>"`;

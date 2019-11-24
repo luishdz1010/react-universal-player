@@ -5,6 +5,9 @@
     "target": "es5",
     "lib": ["dom", "es6"],
     "strict": true,
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "noImplicitReturns": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "jsx": "react",
@@ -16,12 +19,7 @@
     "outDir": "dist",
     "resolveJsonModule": true,
     "importHelpers": true,
-    "plugins": [
-      {
-        "name": "typescript-tslint-plugin",
-        "alwaysShowRuleFailuresAsWarnings": false
-      }
-    ]
+    "typeRoots": ["type-overrides", "node_modules/@types"]
   },
   "include": ["./src"],
   "compileOnSave": false
