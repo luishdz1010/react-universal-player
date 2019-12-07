@@ -43,7 +43,7 @@ export const waitForResult = async <T>(callback: () => T | null | undefined): Pr
   await wait(
     () => {
       const t = callback()
-      if (t === undefined || t === null) throw new Error('result not empty')
+      if (t === undefined || t === null) throw new Error('waitForResult: empty result')
       ret = t
     },
     { timeout: 3000 }

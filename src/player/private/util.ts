@@ -10,12 +10,16 @@ export const useLastValueRef = <T>(val: T) => {
   return ref
 }
 
-export const useValidateUrl = (url: string, validator: (url: string) => boolean, onError: (e: Error) => void) => {
+export const useValidateUrl = (
+  url: string,
+  validator: (url: string) => boolean,
+  onError: (e: { error: Error }) => void
+): string | false => {
   const isValid = useMemo(() => validator(url), [url, validator])
 
   useEffect(() => {
-    if (!isValid) onError(new Error(`provided url(${url}) isn't supported by this player`))
+    if (!isValid) onError({ error: new Error(`provided url(${url}) isn't supported by this player`) })
   }, [url, isValid, onError])
 
-  return isValid
+  return url
 }

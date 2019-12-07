@@ -85,28 +85,30 @@ Object.values(allPlayers).forEach(
         await waitForPlaying(await waitForRef(ref), true)
       })
 
-      it('plays video when playing=true', async () => {
-        const ref = createRef<any>()
-        const { rerender } = render(<Player {...props} ref={ref} />)
+      it('plays video when calling setPlaying(true)', async () => {
+        const ref = createRef<PlayerImperative<any>>()
+        render(<Player {...props} ref={ref} />)
 
-        await waitForRef(ref)
+        const player = await waitForRef(ref)
 
-        await waitForPlaying(ref.current, false)
+        await waitForPlaying(player, false)
 
-        rerender(<Player {...props} ref={ref} playing />)
+        await player.setPlaying(true)
 
         await waitForPlaying(ref.current, true)
       })
 
-      it('stops playing when playing=false', async () => {
+      it('stops playing when calling setPlaying(false)', async () => {
         const ref = createRef<any>()
-        const { rerender } = render(<Player {...props} ref={ref} playing />)
+        render(<Player {...props} ref={ref} />)
 
-        await waitForRef(ref)
+        const player = await waitForRef(ref)
 
-        await waitForPlaying(ref.current, true)
+        await player.setPlaying(true)
 
-        rerender(<Player {...props} ref={ref} playing={false} />)
+        await waitForPlaying(player, true)
+
+        await player.setPlaying(false)
 
         await waitForPlaying(ref.current, false)
       })
@@ -116,11 +118,15 @@ Object.values(allPlayers).forEach(
         const clazzQuery = `.${clazz}`
 
         const ref = createRef<any>()
-        const { container } = render(<Player {...props} ref={ref} className={clazz} playing />)
+        const { container } = render(<Player {...props} ref={ref} className={clazz} />)
 
         expect(container.querySelector(clazzQuery)).toBeTruthy()
 
-        await waitForPlaying(await waitForRef(ref), true)
+        const player = await waitForRef(ref)
+
+        await player.setPlaying(true)
+
+        await waitForPlaying(player, true)
 
         expect(container.querySelector(clazzQuery)).toBeTruthy()
       })
@@ -135,17 +141,20 @@ Object.values(allPlayers).forEach(
 
         if (!rootNode(container)) pending('no root container')
 
-        if (spy.calls.count() !== 0) throw new Error('')
-
+        let clicked = false
         await wait(() => {
-          const playButton = getPlayButton(container)
+          if (!clicked) {
+            const playButton = getPlayButton(container)
 
-          if (playButton) fireEvent.click(playButton!)
+            if (playButton) {
+              fireEvent.click(playButton)
+              clicked = true
+            }
+          }
 
           if (spy.calls.count() !== 1) throw new Error(`onPlayingChange called ${spy.calls.count()} times, expected 1`)
 
-          const arg = spy.calls.mostRecent().args[0]
-          if (arg !== true) throw new Error(`onPlayingChange called with ${arg}, expected true`)
+          expect(spy).toHaveBeenCalledWith({ playing: true, error: null })
         })
       })
     })

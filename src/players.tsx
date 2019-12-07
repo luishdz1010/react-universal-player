@@ -1,7 +1,7 @@
 import React from 'react'
 import { PlayerProps } from './PlayerProps'
-import VimeoPlayer from './players/VimeoPlayer'
-import YouTubePlayer from './players/YouTubePlayer'
+import VimeoPlayer from './player/VimeoPlayer'
+import YouTubePlayer from './player/YouTubePlayer'
 import { vimeoUrlTest, vimeoVendorApiLoader } from './providers/vimeo'
 import { youTubeUrlTest, youTubeVendorApiLoader } from './providers/youtube'
 

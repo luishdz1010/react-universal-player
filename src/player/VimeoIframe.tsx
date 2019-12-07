@@ -5,7 +5,7 @@ import { UniversalURLConstructor } from '../PlayerProps'
 export interface VimeoIframeProps extends ComponentProps<'iframe'> {
   urlConstructor: UniversalURLConstructor
   url: string
-  playing?: boolean
+  autoplay?: boolean
   controls?: boolean
   loop?: boolean
   muted?: boolean
@@ -17,7 +17,7 @@ const VimeoIframe = forwardRef(
   (
     {
       url,
-      playing,
+      autoplay,
       controls,
       loop,
       muted,
@@ -35,7 +35,7 @@ const VimeoIframe = forwardRef(
       const T = '1'
       const F = '0'
 
-      u.searchParams.set('autoplay', playing ? T : F)
+      u.searchParams.set('autoplay', autoplay ? T : F)
       u.searchParams.set('controls', controls ? T : F)
       u.searchParams.set('loop', loop ? T : F)
       u.searchParams.set('muted', muted ? T : F)

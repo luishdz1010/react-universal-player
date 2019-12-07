@@ -1,32 +1,42 @@
-export interface PlayerProps {
-  url: string
-  urlConstructor: UniversalURLConstructor
-  playing?: boolean
-  onPlayingChange?: (playing: boolean) => void
-  volume?: number
-  onVolumeChange?: (volume: number) => void
-  loop?: boolean
-  controls?: boolean
-  className?: string
-  playsinline?: boolean
-  autoplay?: boolean
-  muted?: boolean
-  onError?: (error: Error) => void
+interface PlayingStatus {
+  playing: boolean | null
+  error: Error | null
 }
 
-export interface VideoState<VendorApi> {
+interface VolumeStatus {
+  volume: number | null
+  error: Error | null
+}
+
+export interface PlayerProps {
+  className?: string
+  url: string
+  urlConstructor: UniversalURLConstructor
+  autoplay?: boolean
+  initialMuted?: boolean
+  onPlayingChange?: (status: PlayingStatus) => void
+  onVolumeChange?: (status: VolumeStatus) => void
+  onMuteChange?: (muted: boolean) => void
+  loop?: boolean
+  controls?: boolean
+  playsinline?: boolean
+}
+
+export interface PlayerInternalState<VendorApi> {
   url: string
   urlConstructor: UniversalURLConstructor
   vendorApi: VendorApi | null
-  playing: boolean
-  onPlayingChange: (playing: boolean) => void
-  volume: number
-  onVolumeChange: (volume: number) => void
+  playing: boolean | null
+  onPlayingChange: (status: Partial<PlayingStatus>) => void
+  playbackError: Error | null
+  volume: number | null
+  volumeError: Error | null
+  muted: boolean | null
+  onVolumeChange: (status: Partial<VolumeStatus>) => void
+  onMuteChange: (muted: boolean) => void
   loop: boolean
   controls: boolean
   playsinline: boolean
-  muted: boolean
-  onError: (error: Error) => void
 }
 
 export interface UniversalURLSearchParams {

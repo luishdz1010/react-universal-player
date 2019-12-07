@@ -3,16 +3,17 @@ const alias = require('@rollup/plugin-alias')
 const commonjs = require('rollup-plugin-commonjs')
 const nodeResolve = require('rollup-plugin-node-resolve')
 const replace = require('rollup-plugin-replace')
-const typescript = require('rollup-plugin-typescript2')
+const typescript = require('rollup-plugin-typescript')
 const react = require('react')
 
 module.exports = function(config) {
   const chromeFlags = [
-    // '--autoplay-policy=no-user-gesture-required',
+    '--autoplay-policy=no-user-gesture-required',
     '--disable-web-security',
     '--deterministic-fetch',
     '--disable-site-isolation-trials',
     '--lang=en_US',
+    '--no-sandbox',
   ]
 
   const firefoxFlags = {
@@ -75,11 +76,8 @@ module.exports = function(config) {
         }),
 
         typescript({
-          check: false,
-          tsconfigOverride: {
-            declaration: false,
-            declarationMap: false,
-          },
+          declaration: false,
+          declarationMap: false,
         }),
 
         replace({

@@ -11,15 +11,21 @@ describe.each(Object.values(allPlayers))('%s jsdom', ({ Player, name }) => {
     urlConstructor: URL,
   }
 
-  it('calls onError on unrecognizable url', async () => {
+  it('returns an error unrecognizable url', async () => {
     let err: Error | null = null
-    const onError = (e: Error) => {
-      err = e
-    }
 
-    render(<Player url="http://example.com/123" {...sharedPlayerProps} onError={onError} />)
+    render(
+      <Player
+        url="http://example.com/123"
+        {...sharedPlayerProps}
+        onPlayingChange={({ error }) => {
+          err = error
+        }}
+      />
+    )
 
     await wait(() => {
+      expect(err).toBeInstanceOf(Error)
       expect(err).toMatchSnapshot()
     })
   })

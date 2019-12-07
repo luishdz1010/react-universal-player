@@ -1,0 +1,99 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`VimeoPlayer jsdom calls onError on unrecognizable url 1`] = `[Error: provided url(http://example.com/123) isn't supported by this player]`;
+
+exports[`VimeoPlayer jsdom calls onPlaybackError on unrecognizable url 1`] = `[Error: provided url(http://example.com/123) isn't supported by this player]`;
+
+exports[`VimeoPlayer jsdom returns an error unrecognizable url 1`] = `[Error: provided url(http://example.com/123) isn't supported by this player]`;
+
+exports[`VimeoPlayer universal renders with url= 1`] = `
+<DocumentFragment>
+  <iframe
+    allow="autoplay; fullscreen"
+    allowfullscreen=""
+    frameborder="0"
+    src=""
+  />
+</DocumentFragment>
+`;
+
+exports[`VimeoPlayer universal renders with url=http://example.com 1`] = `
+<DocumentFragment>
+  <iframe
+    allow="autoplay; fullscreen"
+    allowfullscreen=""
+    frameborder="0"
+    src="http://example.com/?autoplay=0&controls=1&loop=0&muted=0&playsinline=0"
+  />
+</DocumentFragment>
+`;
+
+exports[`VimeoPlayer universal renders with url=notaurl 1`] = `
+<DocumentFragment>
+  <iframe
+    allow="autoplay; fullscreen"
+    allowfullscreen=""
+    frameborder="0"
+    src="notaurl"
+  />
+</DocumentFragment>
+`;
+
+exports[`VimeoPlayer universal renders with url=video.com 1`] = `
+<DocumentFragment>
+  <iframe
+    allow="autoplay; fullscreen"
+    allowfullscreen=""
+    frameborder="0"
+    src="video.com"
+  />
+</DocumentFragment>
+`;
+
+exports[`YouTubePlayer jsdom calls onError on unrecognizable url 1`] = `[Error: provided url(http://example.com/123) isn't supported by this player]`;
+
+exports[`YouTubePlayer jsdom returns an error unrecognizable url 1`] = `[Error: provided url(http://example.com/123) isn't supported by this player]`;
+
+exports[`YouTubePlayer universal renders with url= 1`] = `
+<DocumentFragment>
+  <iframe
+    allow="autoplay; fullscreen"
+    allowfullscreen=""
+    frameborder="0"
+    src=""
+  />
+</DocumentFragment>
+`;
+
+exports[`YouTubePlayer universal renders with url=http://example.com 1`] = `
+<DocumentFragment>
+  <iframe
+    allow="autoplay; fullscreen"
+    allowfullscreen=""
+    frameborder="0"
+    src="http://example.com/?autoplay=0&loop=0&playsinline=0&controls=1&mute=0&modestbranding=1&showinfo=0&rel=0&enablejsapi=1&iv_load_policy=1"
+  />
+</DocumentFragment>
+`;
+
+exports[`YouTubePlayer universal renders with url=notaurl 1`] = `
+<DocumentFragment>
+  <iframe
+    allow="autoplay; fullscreen"
+    allowfullscreen=""
+    frameborder="0"
+    src="notaurl"
+  />
+</DocumentFragment>
+`;
+
+exports[`YouTubePlayer universal renders with url=video.com 1`] = `
+<DocumentFragment>
+  <iframe
+    allow="autoplay; fullscreen"
+    allowfullscreen=""
+    frameborder="0"
+    src="video.com"
+  />
+</DocumentFragment>
+`;

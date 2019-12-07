@@ -1,10 +1,10 @@
 import { useEffect } from 'react'
+import PlayerImperative from './PlayerImperative'
 import PlayerImperativePrivate, { PlayerImperativeMuteable } from './private/PlayerImperativePrivate'
 
-export const usePlaybackEffect = (player: PlayerImperativePrivate | null, playing: boolean) => {
+export const usePlaybackEffect = (player: PlayerImperative | null, playing: boolean) => {
   useEffect(() => {
-    if (playing) player?.play()
-    else player?.pause()
+    player?.setPlaying(playing)
   }, [playing, player])
 }
 
@@ -19,8 +19,8 @@ export interface Volume {
   muted: boolean
 }
 
-export const useVolumeMutedEffect = (
-  player: (PlayerImperativePrivate & PlayerImperativeMuteable) | null,
+export const useVolumeEffect = (
+  player: (PlayerImperative & PlayerImperativeMuteable) | null,
   { muted, volume }: Volume
 ) => {
   useEffect(() => {
@@ -32,7 +32,7 @@ export const useVolumeMutedEffect = (
   }, [player, muted])
 }
 
-export const useVolumeMutedUnifiedEffect = (player: PlayerImperativePrivate | null, { muted, volume }: Volume) => {
+export const useVolumeSimulatedMutedEffect = (player: PlayerImperative | null, { muted, volume }: Volume) => {
   useEffect(() => {
     if (!muted) player?.setVolume(volume)
   }, [muted, player, volume])

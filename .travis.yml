@@ -3,6 +3,8 @@ node_js:
   - '10'
   - '12'
 cache: yarn
+addons:
+  chrome: stable
 notifications:
   email: false
 env:
