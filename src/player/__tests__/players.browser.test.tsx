@@ -1,6 +1,7 @@
 import { fireEvent, wait } from '@testing-library/react'
 import React, { createRef } from 'react'
 import { render, waitForRef } from '../../__tests__/utils'
+import { PlayerProps } from '../../PlayerProps'
 import PlayerImperative from '../PlayerImperative'
 import { VimeoPlayerImperative } from '../private/VimeoPlayerImpl'
 import { YouTubePlayerImperative } from '../private/YouTubePlayerImpl'
@@ -47,9 +48,9 @@ const allPlayers = [
 Object.values(allPlayers).forEach(
   ({ Player, name, validUrl, getPlayerType, isPlaying, getPlayButton, rootNode, ...baseProps }) => {
     describe(`${name} browser`, () => {
-      const props = {
+      const props: PlayerProps = {
         url: validUrl,
-        muted: true,
+        initialMuted: true,
         urlConstructor: URL,
         ...baseProps,
       }

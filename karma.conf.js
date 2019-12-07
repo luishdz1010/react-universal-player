@@ -8,7 +8,7 @@ const react = require('react')
 
 module.exports = function(config) {
   const chromeFlags = [
-    '--autoplay-policy=no-user-gesture-required',
+    // '--autoplay-policy=no-user-gesture-required',
     '--disable-web-security',
     '--deterministic-fetch',
     '--disable-site-isolation-trials',
@@ -126,7 +126,7 @@ module.exports = function(config) {
     concurrency: Infinity,
 
     parallelOptions: {
-      executors: 1,
+      executors: process.env.CI ? 2 : 1,
     },
   })
 }
