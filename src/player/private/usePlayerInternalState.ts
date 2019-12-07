@@ -67,6 +67,7 @@ const usePlayerInternalState = <T>(
       params.onPlayingChange?.({ playing, error: playbackError, ...p })
 
       if (process.env.NODE_ENV !== 'production') {
+        // eslint-disable-next-line no-console
         if (!params.onPlayingChange && p.error) console.error('Unhandled player playback error', p.error)
       }
     }),
@@ -78,6 +79,7 @@ const usePlayerInternalState = <T>(
       params.onVolumeChange?.({ volume, error: volumeError, ...v })
 
       if (process.env.NODE_ENV !== 'production') {
+        // eslint-disable-next-line no-console
         if (!params.onVolumeChange && v.error) console.error('Unhandled player volume error', v.error)
       }
     }),

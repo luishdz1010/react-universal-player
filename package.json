@@ -46,7 +46,7 @@
     "style:fix": "npm run format:fix && npm run lint:fix",
     "format": "prettier \"**/*.{ts,tsx,js,jsx,css,scss,sass,less,md}\"",
     "format:fix": "npm run format -- --write",
-    "lint": "eslint src/**/*",
+    "lint": "eslint --ext .js,.ts,.tsx src",
     "lint:fix": "npm run lint -- --fix",
     "prerelease": "npm run build",
     "release": "standard-version",

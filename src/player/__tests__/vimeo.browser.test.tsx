@@ -1,13 +1,14 @@
-import { wait } from '@testing-library/react'
-import React, { createRef } from 'react'
-import { render, waitForRef } from '../../__tests__/utils'
-import { VimeoPlayerImperative } from '../private/VimeoPlayerImpl'
-import { vimeo } from './players'
-
-const { Player, validUrl, vimeoVendorApiLoader } = vimeo
-const props = { vimeoVendorApiLoader, url: validUrl, urlConstructor: URL }
+// import { wait } from '@testing-library/react'
+// import React, { createRef } from 'react'
+// import { render, waitForRef } from '../../__tests__/utils'
+// import { VimeoPlayerImperative } from '../private/VimeoPlayerImpl'
+// import { vimeo } from './players'
+//
+// const { Player, validUrl, vimeoVendorApiLoader } = vimeo
+// const props = { vimeoVendorApiLoader, url: validUrl, urlConstructor: URL }
 
 describe('Vimeo browser', () => {
+  // eslint-disable-next-line jest/no-commented-out-tests
   // it('plays video after update', async () => {
   //   const api = createRef<VimeoPlayerImperative>()
   //   const { rerender } = render(<Player {...props} ref={api} muted />)

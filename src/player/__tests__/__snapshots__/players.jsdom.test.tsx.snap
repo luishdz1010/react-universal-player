@@ -1,9 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`VimeoPlayer jsdom calls onError on unrecognizable url 1`] = `[Error: provided url(http://example.com/123) isn't supported by this player]`;
-
-exports[`VimeoPlayer jsdom calls onPlaybackError on unrecognizable url 1`] = `[Error: provided url(http://example.com/123) isn't supported by this player]`;
-
 exports[`VimeoPlayer jsdom returns an error unrecognizable url 1`] = `[Error: provided url(http://example.com/123) isn't supported by this player]`;
 
 exports[`VimeoPlayer universal renders with url= 1`] = `
@@ -49,8 +45,6 @@ exports[`VimeoPlayer universal renders with url=video.com 1`] = `
   />
 </DocumentFragment>
 `;
-
-exports[`YouTubePlayer jsdom calls onError on unrecognizable url 1`] = `[Error: provided url(http://example.com/123) isn't supported by this player]`;
 
 exports[`YouTubePlayer jsdom returns an error unrecognizable url 1`] = `[Error: provided url(http://example.com/123) isn't supported by this player]`;
 

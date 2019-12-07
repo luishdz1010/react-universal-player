@@ -6,7 +6,7 @@ import { commonPlayersTests } from './players.jest'
 
 commonPlayersTests(URL)
 
-describe.each(Object.values(allPlayers))('%s jsdom', ({ Player, name }) => {
+describe.each(Object.values(allPlayers))('%s jsdom', ({ Player }) => {
   const sharedPlayerProps = {
     urlConstructor: URL,
   }
