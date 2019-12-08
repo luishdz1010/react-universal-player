@@ -29,9 +29,20 @@ module.exports = function(config) {
     frameworks: ['parallel', 'jasmine'],
 
     client: {
+      captureConsole: true,
       jasmine: {
         timeoutInterval: 15000,
       },
+    },
+
+    // level of logging
+    // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
+    logLevel: config.LOG_INFO,
+
+    browserConsoleLogOptions: {
+      level: 'log',
+      format: '%b %T: %m',
+      terminal: true,
     },
 
     files: [
@@ -93,10 +104,6 @@ module.exports = function(config) {
     port: 9876,
 
     colors: true,
-
-    // level of logging
-    // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
-    logLevel: config.LOG_INFO,
 
     // enable / disable watching file and executing tests whenever any file changes
     autoWatch: false,
