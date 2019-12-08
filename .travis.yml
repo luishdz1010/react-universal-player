@@ -1,13 +1,8 @@
 language: node_js
 node_js:
-  - '10'
   - '12'
 os: linux
 dist: xenial
-addons:
-  chrome: stable
-services:
-  - xvfb
 notifications:
   email: false
 cache: yarn
@@ -17,5 +12,3 @@ install:
   - yarn --frozen-lockfile
 script:
   - yarn build
-after_script:
-  - cat .chrome/chrome_debug.log
