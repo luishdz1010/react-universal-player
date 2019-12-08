@@ -6,7 +6,7 @@ export type VimeoVendorApi = typeof Vimeo
 export const VIMEO_SCRIPT_URL = 'https://player.vimeo.com/api/player.js'
 
 export const vimeoUrlTest = (url: string) => {
-  return /vimeo\.com\/(?!external\/[^.]+\.).+/.test(url)
+  return /^(https?:)?\/\/((player|www)\.)?vimeo\.com(?=$|\/)/.test(url)
 }
 
 export const vimeoVendorApiLoader = (): Promise<VimeoVendorApi> => {

@@ -6,8 +6,17 @@ const customQueries = {}
 
 const queries = { ...defaultQueries, ...customQueries }
 
-export const render = (ui: ReactElement, options?: RenderOptions<typeof queries>) =>
-  testingLibRender<typeof queries>(ui, { queries, ...options })
+export const render = (ui: ReactElement, options?: RenderOptions<typeof queries>) => {
+  const ret = testingLibRender<typeof queries>(ui, { queries, ...options })
+
+  // ensure we output logs from within each player iframe if any
+  ret.container.querySelectorAll('iframe').forEach((el) => {
+    // eslint-disable-next-line no-param-reassign
+    ;(el.contentWindow as any).console = window.console
+  })
+
+  return ret
+}
 
 export const universalRender = (element: ReactElement) => {
   if (typeof window !== 'undefined') {
