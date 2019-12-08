@@ -55,7 +55,7 @@ Object.values(allPlayers).forEach(
         ...baseProps,
       }
 
-      const waitForPlaying = async (api: any, playing: boolean) => {
+      const waitForPlaying = async (api: PlayerImperative<any>, playing: boolean) => {
         await wait(async () => {
           if (!(await isPlaying(api, playing)))
             throw new Error(`player status is not ${playing ? 'playing' : 'paused'}`)
@@ -96,7 +96,7 @@ Object.values(allPlayers).forEach(
 
         await player.setPlaying(true)
 
-        await waitForPlaying(ref.current, true)
+        await waitForPlaying(player, true)
       })
 
       it('stops playing when calling setPlaying(false)', async () => {

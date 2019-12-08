@@ -57,20 +57,28 @@ const VimeoPlayer = forwardRef<VimeoPlayerImperative | null, VimeoPlayerProps>((
 
     const player = useCreatePlayer(
       () => ({
-        create: () =>
-          validUrl && vendorApi
-            ? new VimeoPlayerImpl(
-                vendorApi,
-                rootEl.current!,
-                {
-                  autoplay: autoplay.current,
-                  playsinline,
-                  controls,
-                  vimeoOptions,
-                },
-                nonDepState
-              )
-            : null,
+        create: () => {
+          if (!validUrl || !vendorApi) return null
+
+          return new Promise<VimeoPlayerImpl>((accept, reject) => {
+            // eslint-disable-next-line no-new
+            new VimeoPlayerImpl(
+              vendorApi,
+              rootEl.current!,
+              {
+                autoplay: autoplay.current,
+                playsinline,
+                controls,
+                vimeoOptions,
+              },
+              nonDepState,
+              {
+                onReady: (self) => accept(self),
+                onError: reject,
+              }
+            )
+          })
+        },
         onError: onPlayingChange,
       }),
       [controls, nonDepState, onPlayingChange, playsinline, validUrl, vendorApi, vimeoOptions]

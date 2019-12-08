@@ -32,7 +32,8 @@ export default class VimeoPlayerImpl implements VimeoPlayerImperative, PlayerImp
     Vimeo: VimeoVendorApi,
     rootEl: HTMLElement,
     { controls, playsinline, vimeoOptions, autoplay }: VimeoImplSingleUse,
-    private readonly state: { readonly current: VimeoImplStateRef }
+    private readonly state: { readonly current: VimeoImplStateRef },
+    { onReady, onError }: { onReady: (p: VimeoPlayerImpl) => void; onError: (e: Error) => void }
   ) {
     this.currentUrl = state.current.url
 
@@ -45,6 +46,13 @@ export default class VimeoPlayerImpl implements VimeoPlayerImperative, PlayerImp
       muted: state.current.muted === null ? undefined : state.current.muted,
       ...vimeoOptions,
     })
+
+    player
+      .ready()
+      .catch(onError)
+      .then(() => {
+        onReady(this)
+      })
 
     player.on('play', () => {
       this.state.current.onPlayingChange({ playing: true, error: null })
