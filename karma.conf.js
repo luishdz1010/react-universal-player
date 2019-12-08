@@ -78,6 +78,7 @@ module.exports = function(config) {
         typescript({
           declaration: false,
           declarationMap: false,
+          target: 'es2019',
         }),
 
         replace({
