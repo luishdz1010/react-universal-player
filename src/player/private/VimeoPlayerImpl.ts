@@ -49,8 +49,14 @@ export default class VimeoPlayerImpl implements VimeoPlayerImperative, PlayerImp
 
     player
       .ready()
-      .catch(onError)
+      .catch((err) => {
+        // eslint-disable-next-line no-console
+        console.error(`Vimeo ready error`, err)
+        onError(err)
+      })
       .then(() => {
+        // eslint-disable-next-line no-console
+        console.error(`Vimeo ready OK`)
         onReady(this)
       })
 
