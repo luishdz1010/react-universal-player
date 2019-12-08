@@ -47,6 +47,9 @@ export default class VimeoPlayerImpl implements VimeoPlayerImperative, PlayerImp
       ...vimeoOptions,
     })
 
+    // eslint-disable-next-line no-console
+    console.error(`Vimeo calling ready`)
+
     player
       .ready()
       .catch((err) => {
