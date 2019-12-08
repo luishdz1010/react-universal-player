@@ -6,14 +6,11 @@ sudo: required
 cache: yarn
 addons:
   chrome: stable
+dist: xenial
 services:
   - xvfb
 notifications:
   email: false
-env:
-  - CI=true
-before_script:
-  - export DISPLAY=:99.0
 before_install:
   - npm config set scripts-prepend-node-path true
   - npm i -g yarn
