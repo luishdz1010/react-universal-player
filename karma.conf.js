@@ -8,7 +8,7 @@ const react = require('react')
 
 module.exports = function(config) {
   const chromeFlags = [
-    '--autoplay-policy=no-user-gesture-required',
+    // '--autoplay-policy=no-user-gesture-required',
     '--disable-gpu',
     '--disable-web-security',
     '--deterministic-fetch',
@@ -109,7 +109,7 @@ module.exports = function(config) {
     autoWatch: false,
 
     // start these browsers
-    browsers: ['CustomChrome'],
+    browsers: ['CustomHeadlessChrome'],
 
     customLaunchers: {
       CustomChrome: {

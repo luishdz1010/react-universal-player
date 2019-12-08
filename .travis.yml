@@ -2,15 +2,15 @@ language: node_js
 node_js:
   - '10'
   - '12'
-sudo: required
-cache: yarn
+os: linux
+dist: bionic
 addons:
   chrome: stable
-dist: xenial
 services:
   - xvfb
 notifications:
   email: false
+cache: yarn
 before_install:
   - npm config set scripts-prepend-node-path true
 install:
