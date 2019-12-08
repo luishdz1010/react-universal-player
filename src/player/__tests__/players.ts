@@ -8,7 +8,7 @@ const w: any = typeof window !== 'undefined' ? window : global
 export const vimeo = {
   Player: VimeoPlayer,
   name: 'VimeoPlayer',
-  validUrl: 'https://player.vimeo.com/video/253989945',
+  validUrl: 'https://player.vimeo.com/video/90509568',
   getPlayerType: () => w.Vimeo?.Player,
   vimeoVendorApiLoader,
   toString: () => vimeo.name,
