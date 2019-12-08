@@ -8,13 +8,18 @@ const react = require('react')
 
 module.exports = function(config) {
   const chromeFlags = [
-    // '--autoplay-policy=no-user-gesture-required',
+    '--autoplay-policy=no-user-gesture-required',
     '--disable-gpu',
     '--disable-web-security',
     '--deterministic-fetch',
     '--disable-site-isolation-trials',
     '--lang=en_US',
     '--no-sandbox',
+    '--disable-setuid-sandbox',
+    '--disable-ipc-flooding-protection',
+    '--enable-logging',
+    '--v=1',
+    // '--vmodule=console=1',
   ]
 
   const firefoxFlags = {
@@ -22,6 +27,7 @@ module.exports = function(config) {
     'media.block-autoplay-until-in-foreground': false,
     'security.fileuri.strict_origin_policy': false,
   }
+
   config.set({
     // base path that will be used to resolve all patterns (eg. files, exclude)
     basePath: '',
@@ -109,16 +115,18 @@ module.exports = function(config) {
     autoWatch: false,
 
     // start these browsers
-    browsers: ['CustomHeadlessChrome'],
+    browsers: ['CustomChrome'],
 
     customLaunchers: {
       CustomChrome: {
         base: 'Chrome',
         flags: chromeFlags,
+        chromeDataDir: path.resolve(__dirname, '.chrome'),
       },
       CustomHeadlessChrome: {
         base: 'ChromeHeadless',
         flags: chromeFlags,
+        chromeDataDir: path.resolve(__dirname, '.chrome'),
       },
       CustomFF: {
         base: 'Firefox',
@@ -135,7 +143,7 @@ module.exports = function(config) {
     concurrency: Infinity,
 
     parallelOptions: {
-      executors: process.env.CI ? 2 : 1,
+      executors: 1,
     },
   })
 }
