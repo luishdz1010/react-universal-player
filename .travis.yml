@@ -11,10 +11,7 @@ services:
   - xvfb
 notifications:
   email: false
-before_install:
-  - npm config set scripts-prepend-node-path true
-  - npm i -g yarn
 install:
-  - yarn
+  - yarn --frozen-lockfile
 script:
   - yarn build

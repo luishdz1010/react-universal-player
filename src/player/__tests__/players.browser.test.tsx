@@ -19,7 +19,7 @@ const getIframe = (container: HTMLElement) => {
 const allPlayers = [
   {
     ...vimeo,
-    async isPlaying(api: VimeoPlayerImperative, should: any) {
+    async isPlaying(api: VimeoPlayerImperative, should: boolean) {
       const isPlaying = !(await api.player.getPaused())
 
       return isPlaying === should
@@ -31,7 +31,7 @@ const allPlayers = [
   },
   {
     ...youTube,
-    isPlaying(api: YouTubePlayerImperative, should: any) {
+    isPlaying(api: YouTubePlayerImperative, should: boolean) {
       const s = api.player.getPlayerState()
 
       if (should) return s === YT.PlayerState.PLAYING
