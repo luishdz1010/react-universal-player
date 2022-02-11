@@ -118,7 +118,7 @@
     "jest": "24.9.0",
     "jest-environment-jsdom-fourteen": "1.0.1",
     "jest-watch-typeahead": "0.4.2",
-    "karma": "4.4.1",
+    "karma": "6.3.14",
     "karma-chrome-launcher": "3.1.0",
     "karma-firefox-launcher": "1.2.0",
     "karma-jasmine": "2.0.1",
